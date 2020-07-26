@@ -1,4 +1,4 @@
-package com.solvd.automation.lab.carina.demo.bo;
+package com.solvd.automation.lab.carina.demo.bo.azure;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

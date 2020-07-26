@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.solvd.automation.lab.carina.demo.api.azure.user.*;
-import com.solvd.automation.lab.carina.demo.bo.AzureUser;
+import com.solvd.automation.lab.carina.demo.bo.azure.AzureUser;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.testng.Assert;
 import org.testng.annotations.*;
