@@ -16,17 +16,10 @@
 package com.solvd.automation.lab.carina.demo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qaprosoft.apitools.validation.JsonCompareKeywords;
 import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
-import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
-import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
-import com.solvd.automation.lab.carina.demo.api.DeleteUserMethod;
-import com.solvd.automation.lab.carina.demo.api.GetUserMethods;
-import com.solvd.automation.lab.carina.demo.api.PostUserMethod;
-import com.solvd.automation.lab.carina.demo.api.azure.PostAzureUserMethod;
+import com.solvd.automation.lab.carina.demo.api.azure.user.*;
 import com.solvd.automation.lab.carina.demo.bo.AzureUser;
-import org.apache.log4j.Logger;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -36,29 +29,7 @@ import org.testng.annotations.*;
  *
  * @author qpsdemo
  */
-public class APISampleTestV2 extends BaseTest {
-
-    private static final Logger LOGGER = Logger.getLogger(APISampleTestV2.class);
-
-    @BeforeClass
-    public void fff() {
-        LOGGER.info("\nBefore class\n");
-    }
-
-    @AfterClass
-    public void eee() {
-        LOGGER.info("\nAfter class\n");
-    }
-
-    @BeforeMethod
-    public void ccc() {
-        LOGGER.info("\nBefore Method\n");
-    }
-
-    @AfterMethod
-    public void ddd() {
-        LOGGER.info("\nAfter Method\n");
-    }
+public class APISampleTestV2 {
 
     @MethodOwner(owner = "sshukalovich")
     @Test
@@ -78,4 +49,52 @@ public class APISampleTestV2 extends BaseTest {
 
     }
 
+    @MethodOwner(owner = "vbkoshak")
+    @Test
+    public void  testGetAzureUsers() {
+        String rsPath = "api/azure/users/_get/rs.json";
+        GetAzureUserMethod getAzureUserMethod = new GetAzureUserMethod(rsPath);
+        getAzureUserMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
+        getAzureUserMethod.callAPI();
+        getAzureUserMethod.validateResponse(JSONCompareMode.STRICT);
+    }
+
+    @MethodOwner(owner = "vbkoshak")
+    @Test
+    public void testDeleteAzureUserById() {
+        int delId = 3;
+        DeleteAzureUserMethodById deleteAzureUserMethodById = new DeleteAzureUserMethodById(delId);
+        deleteAzureUserMethodById.expectResponseStatus(HttpResponseStatusType.OK_200);
+        deleteAzureUserMethodById.callAPI();
+    }
+
+    @MethodOwner(owner = "vbkoshak")
+    @Test
+    public void testGetAzureUserById() {
+        int getId = 4;
+        GetAzureUserMethodById getAzureUserMethodById = new GetAzureUserMethodById(getId);
+        getAzureUserMethodById.expectResponseStatus(HttpResponseStatusType.OK_200);
+        getAzureUserMethodById.callAPI();
+        getAzureUserMethodById.validateResponse(JSONCompareMode.STRICT);
+    }
+
+    @MethodOwner(owner = "vbkoshak")
+    @Test
+    public void testPutAzureUserById() throws Exception {
+        String uname = "vbkoshak";
+        String passwd = "qwerty";
+        int id = 8;
+        PutAzureUserMethodById putAzureUserMethodById = new PutAzureUserMethodById(id,uname,passwd);
+        putAzureUserMethodById.expectResponseStatus(HttpResponseStatusType.OK_200);
+        String rs = putAzureUserMethodById.callAPI().asString();
+
+        ObjectMapper mapper = new ObjectMapper();
+        AzureUser actualUser = mapper.readValue(rs, AzureUser.class);
+
+        Assert.assertNotNull(actualUser, "Response object cannot be null!");
+        Assert.assertEquals(actualUser.getUsername(), uname, "Username is not as expected!");
+        Assert.assertEquals(actualUser.getPassword(), passwd, "Password is not as expected!");
+        Assert.assertEquals(actualUser.getId(), ""+ id, "Id is not as expected!");
+
+    }
 }

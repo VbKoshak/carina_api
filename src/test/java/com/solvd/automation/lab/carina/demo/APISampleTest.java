@@ -15,13 +15,10 @@
  */
 package com.solvd.automation.lab.carina.demo;
 
-import com.qaprosoft.carina.core.foundation.report.testrail.TestRailCases;
-import org.apache.log4j.Logger;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.testng.annotations.*;
 
 import com.qaprosoft.apitools.validation.JsonCompareKeywords;
-import com.qaprosoft.carina.core.foundation.AbstractTest;
 import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
@@ -35,34 +32,11 @@ import com.solvd.automation.lab.carina.demo.api.PostUserMethod;
  *
  * @author qpsdemo
  */
-public class APISampleTest extends BaseTest {
-
-    private static final Logger LOGGER = Logger.getLogger(APISampleTest.class);
-
-    @BeforeClass
-    public void fff() {
-        LOGGER.info("\nBefore class\n");
-    }
-
-    @AfterClass
-    public void eee() {
-        LOGGER.info("\nAfter class\n");
-    }
-
-    @BeforeMethod
-    public void ccc() {
-        LOGGER.info("\nBefore Method\n");
-    }
-
-    @AfterMethod
-    public void ddd() {
-        LOGGER.info("\nAfter Method\n");
-    }
+public class APISampleTest{
 
     @Test(description = "JIRA#DEMO-0001")
     @MethodOwner(owner = "qpsdemo")
     public void testCreateUser() throws Exception {
-        setCases("4555,54545");
         PostUserMethod api = new PostUserMethod();
         api.expectResponseStatus(HttpResponseStatusType.CREATED_201);
         api.callAPI();
