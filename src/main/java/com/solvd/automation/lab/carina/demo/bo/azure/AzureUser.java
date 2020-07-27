@@ -19,6 +19,10 @@ public class AzureUser {
         this.password = password;
     }
 
+    public AzureUser(){
+
+    };
+
 
     public String getId() {
         return id;

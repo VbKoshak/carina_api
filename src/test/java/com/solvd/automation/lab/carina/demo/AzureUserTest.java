@@ -24,12 +24,7 @@ import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-/**
- * This sample shows how create REST API tests.
- *
- * @author qpsdemo
- */
-public class APISampleTestV2 {
+public class AzureUserTest {
 
     @MethodOwner(owner = "sshukalovich")
     @Test
@@ -51,12 +46,17 @@ public class APISampleTestV2 {
 
     @MethodOwner(owner = "vbkoshak")
     @Test
+    @Ignore
     public void  testGetAzureUsers() {
-        String rsPath = "api/azure/users/_get/rs.json";
-        GetAzureUserMethod getAzureUserMethod = new GetAzureUserMethod(rsPath);
+        String testUname = "tester";
+        String testPW = "12345";
+
+        PostAzureUserMethod postAzureUserMethod = new PostAzureUserMethod(testUname, testPW);
+        postAzureUserMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
+
+        GetAzureUserMethod getAzureUserMethod = new GetAzureUserMethod();
         getAzureUserMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
-        getAzureUserMethod.callAPI();
-        getAzureUserMethod.validateResponse(JSONCompareMode.STRICT);
+        String rs = getAzureUserMethod.callAPI().asString();
     }
 
     @MethodOwner(owner = "vbkoshak")

@@ -8,7 +8,7 @@
 
 	<test name="User API tests">
 		<classes>
-			<class name="com.solvd.automation.lab.carina.demo.APISampleTestV2">
+			<class name="com.solvd.automation.lab.carina.demo.AzureUserTest">
 				<methods>
 					<include name="testCreateAzureUser" />
 					<include name="testGetAzureUsers" />
