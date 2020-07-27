@@ -1,0 +1,23 @@
+{
+  "$schema" : "some-schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+        "ID": {
+            "type": "integer"
+        },
+        "UserName" : {
+            "type": "string"
+        },
+        "Password": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "ID",
+        "UserName",
+        "Password"
+    ]
+  }
+}

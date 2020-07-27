@@ -1,0 +1,23 @@
+{
+  "$schema" : "some-schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+        "ID": {
+            "type": "integer"
+        },
+        "IDBook" : {
+            "type": "integer"
+        },
+        "Url": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "ID",
+        "IDBook",
+        "Url"
+    ]
+  }
+}

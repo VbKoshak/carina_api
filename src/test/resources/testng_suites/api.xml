@@ -17,6 +17,16 @@
 					<include name="testPutAzureUserById" />
 				</methods>
 			</class>
+			<class name="com.solvd.automation.lab.carina.demo.AzureCoverPhotoTest">
+				<methods>
+					<include name="testGetCovers" />
+					<include name="testDeleteCover" />
+					<include name="testGetCoverById" />
+					<include name="testGetCoverByBookId" />
+					<include name="testPostCover" />
+					<include name="testPutCover" />
+				</methods>
+			</class>
 		</classes>
 	</test>
 

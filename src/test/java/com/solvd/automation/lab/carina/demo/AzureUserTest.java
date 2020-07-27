@@ -20,8 +20,6 @@ import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.solvd.automation.lab.carina.demo.api.azure.user.*;
 import com.solvd.automation.lab.carina.demo.bo.azure.AzureUser;
-import com.solvd.automation.lab.carina.demo.bo.azure.AzureUsers;
-import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -32,9 +30,7 @@ public class AzureUserTest {
     public void testCreateAzureUser() throws Exception{
         String uname = "sshukalovich";
         String pword = "root";
-        AzureUser user = new AzureUser();
-        user.setUsername(uname);
-        user.setPassword(pword);
+        AzureUser user = new AzureUser(uname,pword);
         PostAzureUserMethod postAzureUserMethod = new PostAzureUserMethod(user);
         postAzureUserMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
         String rs = postAzureUserMethod.callAPI().asString();
@@ -51,13 +47,16 @@ public class AzureUserTest {
     @MethodOwner(owner = "vbkoshak")
     @Test
     @Ignore
-    public void  testGetAzureUsers() throws Exception{
+    public void  testGetAzureUsers() {
         GetAzureUserMethod getAzureUserMethod = new GetAzureUserMethod();
         getAzureUserMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
         getAzureUserMethod.callAPI();
-        getAzureUserMethod.validateResponseAgainstSchema("api/azure/users/_get/rs.schema");
+        getAzureUserMethod.validateResponseAgainstSchema("api/azure/users/_get/rsArray.schema");
     }
 
+    /**
+     * where delId - id of existing user
+     */
     @MethodOwner(owner = "vbkoshak")
     @Test
     public void testDeleteAzureUserById() {
@@ -67,6 +66,9 @@ public class AzureUserTest {
         deleteAzureUserMethodById.callAPI();
     }
 
+    /**
+     * where getId - id of existing user
+     */
     @MethodOwner(owner = "vbkoshak")
     @Test
     public void testGetAzureUserById() {
@@ -74,7 +76,7 @@ public class AzureUserTest {
         GetAzureUserMethodById getAzureUserMethodById = new GetAzureUserMethodById(getId);
         getAzureUserMethodById.expectResponseStatus(HttpResponseStatusType.OK_200);
         getAzureUserMethodById.callAPI();
-        getAzureUserMethodById.validateResponse(JSONCompareMode.STRICT);
+        getAzureUserMethodById.validateResponseAgainstSchema("api/azure/users/_get/rs.schema");
     }
 
     @MethodOwner(owner = "vbkoshak")
@@ -84,12 +86,9 @@ public class AzureUserTest {
         String pword = "qwerty";
         int id = 8;
 
-        AzureUser user = new AzureUser();
-        user.setPassword(pword);
-        user.setUsername(uname);
-        user.setId(id);
+        AzureUser user = new AzureUser("" + id,uname,pword);
 
-        PutAzureUserMethodById putAzureUserMethodById = new PutAzureUserMethodById(id,uname,passwd);
+        PutAzureUserMethodById putAzureUserMethodById = new PutAzureUserMethodById(user);
         putAzureUserMethodById.expectResponseStatus(HttpResponseStatusType.OK_200);
         String rs = putAzureUserMethodById.callAPI().asString();
 

@@ -1,0 +1,5 @@
+{
+  "ID": "${id}",
+  "IDBook": "${book_id}",
+  "Url": "${url}"
+}

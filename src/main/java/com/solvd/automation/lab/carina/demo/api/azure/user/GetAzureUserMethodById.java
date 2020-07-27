@@ -8,7 +8,7 @@ import java.util.Properties;
 public class GetAzureUserMethodById extends AbstractApiMethodV2 implements AzureUserMethod {
 
     public GetAzureUserMethodById(int id) {
-        super(null, "api/azure/users/_get/rsId.json", new Properties());
+        super(null, null, new Properties());
         replaceUrlPlaceholder(URL_PLACEHOLDER, ENV_API_URL);
         replaceUrlPlaceholder(URL_ID_PLACEHOLDER, "" + id);
     }

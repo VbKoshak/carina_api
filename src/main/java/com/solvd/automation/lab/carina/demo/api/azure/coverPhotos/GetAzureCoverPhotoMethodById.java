@@ -5,9 +5,11 @@ import com.solvd.automation.lab.carina.demo.api.azure.coverPhotos.interfaces.Azu
 
 import java.util.Properties;
 
-public class GetAzureCoverPhotoMethod extends AbstractApiMethodV2 implements AzureCoverPhotoMethod {
-    public GetAzureCoverPhotoMethod() {
-        super(null,null,new Properties());
+public class GetAzureCoverPhotoMethodById extends AbstractApiMethodV2 implements AzureCoverPhotoMethod {
+    public GetAzureCoverPhotoMethodById(int id) {
+        super(null,null, new Properties());
         replaceUrlPlaceholder(URL_PLACEHOLDER,ENV_API_URL);
+        replaceUrlPlaceholder(URL_ID_PLACEHOLDER,"" + id);
+
     }
 }
