@@ -20,6 +20,7 @@ import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.solvd.automation.lab.carina.demo.api.azure.user.*;
 import com.solvd.automation.lab.carina.demo.bo.azure.AzureUser;
+import com.solvd.automation.lab.carina.demo.bo.azure.AzureUsers;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -47,16 +48,11 @@ public class AzureUserTest {
     @MethodOwner(owner = "vbkoshak")
     @Test
     @Ignore
-    public void  testGetAzureUsers() {
-        String testUname = "tester";
-        String testPW = "12345";
-
-        PostAzureUserMethod postAzureUserMethod = new PostAzureUserMethod(testUname, testPW);
-        postAzureUserMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
-
+    public void  testGetAzureUsers() throws Exception{
         GetAzureUserMethod getAzureUserMethod = new GetAzureUserMethod();
         getAzureUserMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
-        String rs = getAzureUserMethod.callAPI().asString();
+        getAzureUserMethod.callAPI();
+        getAzureUserMethod.validateResponseAgainstSchema("api/azure/users/_get/rs.schema");
     }
 
     @MethodOwner(owner = "vbkoshak")
