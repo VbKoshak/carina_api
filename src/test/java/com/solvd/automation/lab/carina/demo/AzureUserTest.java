@@ -32,7 +32,10 @@ public class AzureUserTest {
     public void testCreateAzureUser() throws Exception{
         String uname = "sshukalovich";
         String pword = "root";
-        PostAzureUserMethod postAzureUserMethod = new PostAzureUserMethod(uname, pword);
+        AzureUser user = new AzureUser();
+        user.setUsername(uname);
+        user.setPassword(pword);
+        PostAzureUserMethod postAzureUserMethod = new PostAzureUserMethod(user);
         postAzureUserMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
         String rs = postAzureUserMethod.callAPI().asString();
 
@@ -40,8 +43,8 @@ public class AzureUserTest {
         AzureUser actualUser = mapper.readValue(rs, AzureUser.class);
 
         Assert.assertNotNull(actualUser, "Response object cannot be null!");
-        Assert.assertEquals(actualUser.getUsername(), uname, "Username is not as expected!");
-        Assert.assertEquals(actualUser.getPassword(), pword, "Password is not as expected!");
+        Assert.assertEquals(actualUser.getUsername(), user.getUsername(), "Username is not as expected!");
+        Assert.assertEquals(actualUser.getPassword(), user.getPassword(), "Password is not as expected!");
 
     }
 
@@ -78,8 +81,14 @@ public class AzureUserTest {
     @Test
     public void testPutAzureUserById() throws Exception {
         String uname = "vbkoshak";
-        String passwd = "qwerty";
+        String pword = "qwerty";
         int id = 8;
+
+        AzureUser user = new AzureUser();
+        user.setPassword(pword);
+        user.setUsername(uname);
+        user.setId(id);
+
         PutAzureUserMethodById putAzureUserMethodById = new PutAzureUserMethodById(id,uname,passwd);
         putAzureUserMethodById.expectResponseStatus(HttpResponseStatusType.OK_200);
         String rs = putAzureUserMethodById.callAPI().asString();
@@ -88,9 +97,9 @@ public class AzureUserTest {
         AzureUser actualUser = mapper.readValue(rs, AzureUser.class);
 
         Assert.assertNotNull(actualUser, "Response object cannot be null!");
-        Assert.assertEquals(actualUser.getUsername(), uname, "Username is not as expected!");
-        Assert.assertEquals(actualUser.getPassword(), passwd, "Password is not as expected!");
-        Assert.assertEquals(actualUser.getId(), ""+ id, "Id is not as expected!");
+        Assert.assertEquals(actualUser.getUsername(), user.getUsername(), "Username is not as expected!");
+        Assert.assertEquals(actualUser.getPassword(), user.getPassword(), "Password is not as expected!");
+        Assert.assertEquals(actualUser.getId(), ""+ user.getId(), "Id is not as expected!");
 
     }
 }
