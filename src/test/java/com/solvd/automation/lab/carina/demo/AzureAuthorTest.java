@@ -5,7 +5,6 @@ import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.solvd.automation.lab.carina.demo.api.azure.author.*;
 import com.solvd.automation.lab.carina.demo.bo.azure.AzureAuthor;
-import com.solvd.automation.lab.carina.demo.bo.azure.AzureCoverPhoto;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -84,9 +83,9 @@ public class AzureAuthorTest {
         String lastName = "surname";
         AzureAuthor author = new AzureAuthor(id,idBook,firstName,lastName);
 
-        PostAzureAuthorMethod postAzureAuthorMethod = new PostAzureAuthorMethod(author);
-        postAzureAuthorMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
-        String rs = postAzureAuthorMethod.callAPI().asString();
+        PutAzureAuthorMethod putAzureAuthorMethod = new PutAzureAuthorMethod(author);
+        putAzureAuthorMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
+        String rs = putAzureAuthorMethod.callAPI().asString();
 
         ObjectMapper mapper = new ObjectMapper();
         AzureAuthor actualAuthor = mapper.readValue(rs, AzureAuthor.class);

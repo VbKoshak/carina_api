@@ -1,14 +1,15 @@
 package com.solvd.automation.lab.carina.demo.api.azure.book;
 
 import com.qaprosoft.carina.core.foundation.api.AbstractApiMethodV2;
-import com.solvd.automation.lab.carina.demo.api.azure.interfaces.AzureBookMethod;
 
 import java.util.Properties;
 
-public class GetAzureBookMethodById extends AbstractApiMethodV2 implements AzureBookMethod {
+import static com.solvd.automation.lab.carina.demo.api.azure.CONSTANTS.*;
+
+public class GetAzureBookMethodById extends AbstractApiMethodV2 {
     public GetAzureBookMethodById(int id) {
         super(null, null, new Properties());
         replaceUrlPlaceholder(URL_PLACEHOLDER, ENV_API_URL);
-        replaceUrlPlaceholder(URL_ID_PLACEHOLDER, "" + id);
+        replaceUrlPlaceholder(URL_ID_PLACEHOLDER, String.valueOf(id));
     }
 }
