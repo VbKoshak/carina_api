@@ -21,7 +21,7 @@ public class AzureUser {
 
 
 
-    public AzureUser(String username, String password){
+    public AzureUser(String username, String password) {
         this.username = username;
         this.password = password;
     };

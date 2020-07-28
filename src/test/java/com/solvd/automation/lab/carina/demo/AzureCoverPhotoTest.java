@@ -3,7 +3,7 @@ package com.solvd.automation.lab.carina.demo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
-import com.solvd.automation.lab.carina.demo.api.azure.coverPhotos.*;
+import com.solvd.automation.lab.carina.demo.api.azure.coverPhoto.*;
 import com.solvd.automation.lab.carina.demo.bo.azure.AzureCoverPhoto;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -65,6 +65,7 @@ public class AzureCoverPhotoTest {
         String idBook = "1";
         String url = "some url";
         AzureCoverPhoto cover = new AzureCoverPhoto(id,idBook,url);
+
         PostAzureCoverPhotoMethod postAzureCoverPhotoMethod = new PostAzureCoverPhotoMethod(cover);
         postAzureCoverPhotoMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
         String rs = postAzureCoverPhotoMethod.callAPI().asString();

@@ -1,7 +1,7 @@
-package com.solvd.automation.lab.carina.demo.api.azure.coverPhotos;
+package com.solvd.automation.lab.carina.demo.api.azure.coverPhoto;
 
 import com.qaprosoft.carina.core.foundation.api.AbstractApiMethodV2;
-import com.solvd.automation.lab.carina.demo.api.azure.coverPhotos.interfaces.AzureCoverPhotoMethod;
+import com.solvd.automation.lab.carina.demo.api.azure.interfaces.AzureCoverPhotoMethod;
 
 import java.util.Properties;
 

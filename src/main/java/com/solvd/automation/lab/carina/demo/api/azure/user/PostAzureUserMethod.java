@@ -1,7 +1,7 @@
 package com.solvd.automation.lab.carina.demo.api.azure.user;
 
 import com.qaprosoft.carina.core.foundation.api.AbstractApiMethodV2;
-import com.solvd.automation.lab.carina.demo.api.azure.user.interfaces.AzureUserMethod;
+import com.solvd.automation.lab.carina.demo.api.azure.interfaces.AzureUserMethod;
 import com.solvd.automation.lab.carina.demo.bo.azure.AzureUser;
 
 import java.util.Properties;

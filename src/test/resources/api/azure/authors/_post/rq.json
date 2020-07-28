@@ -1,0 +1,5 @@
+{
+  "IDBook": "${idBook}",
+  "FirstName": "${firstName}",
+  "LastName": "${lastName}"
+}

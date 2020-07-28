@@ -12,9 +12,9 @@
 				<methods>
 					<include name="testCreateAzureUser" />
 					<include name="testGetAzureUsers" />
-					<include name="testDeleteAzureUserById" />
+					<include name="testDeleteAzure" />
 					<include name="testGetAzureUserById" />
-					<include name="testPutAzureUserById" />
+					<include name="testPutAzureUser" />
 				</methods>
 			</class>
 			<class name="com.solvd.automation.lab.carina.demo.AzureCoverPhotoTest">
@@ -25,6 +25,34 @@
 					<include name="testGetCoverByBookId" />
 					<include name="testPostCover" />
 					<include name="testPutCover" />
+				</methods>
+			</class>
+			<class name="com.solvd.automation.lab.carina.demo.AzureBookTest">
+				<methods>
+					<include name="testPostAzureBook" />
+					<include name="testGetAzureBooks" />
+					<include name="testDeleteAzureBook" />
+					<include name="testGetAzureBookById" />
+					<include name="testPutAzureBook" />
+				</methods>
+			</class>
+			<class name="com.solvd.automation.lab.carina.demo.AzureAuthorTest">
+				<methods>
+					<include name="testGetAuthors" />
+					<include name="testDeleteAuthor" />
+					<include name="testGetAuthorByID" />
+					<include name="testGetAuthorByBookId" />
+					<include name="testPostAuthor" />
+					<include name="testPutAuthor" />
+				</methods>
+			</class>
+			<class name="com.solvd.automation.lab.carina.demo.AzureActivityTest">
+				<methods>
+					<include name="testPostAzureActivity" />
+					<include name="testGetAzureActivity" />
+					<include name="testDeleteAzureActivity" />
+					<include name="testGetAzureActivityById" />
+					<include name="testPutAzureActivity" />
 				</methods>
 			</class>
 		</classes>
