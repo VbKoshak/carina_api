@@ -1,5 +1,4 @@
 {
-    "$schema" : "some-schema",
     "type": "object",
     "properties": {
         "ID": {
