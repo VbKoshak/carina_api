@@ -1,0 +1,19 @@
+{
+    "type": "object",
+    "properties": {
+        "ID": {
+            "type": "integer"
+        },
+        "IDBook" : {
+            "type": "integer"
+        },
+        "Url": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "ID",
+        "IDBook",
+        "Url"
+    ]
+  }

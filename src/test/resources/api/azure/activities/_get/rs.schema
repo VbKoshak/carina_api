@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "ID" : {
+            "type": "integer"
+        },
+        "Title": {
+            "type": "string"
+        },
+        "DueDate" : {
+            "type": "string"
+        },
+        "Completed": {
+            "type": "string"
+        }
+    }
+}

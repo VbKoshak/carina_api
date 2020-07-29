@@ -1,0 +1,61 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="1" name="Carina Tests - API azure" parallel="methods" thread-count="5">
+
+	<parameter name="suiteOwner" value="vbkoshak"/>
+	<parameter name="zafira_project" value="UNKNOWN"/>
+	<parameter name="jenkinsJobName" value="API-Demo-Test"/>
+	<parameter name="jenkinsJobType" value="api"/>
+
+	<test name="User API tests">
+		<classes>
+			<class name="com.solvd.automation.lab.carina.demo.AzureUserTest">
+				<methods>
+					<include name="testCreateAzureUser" />
+					<include name="testGetAzureUsers" />
+					<include name="testDeleteAzure" />
+					<include name="testGetAzureUserById" />
+					<include name="testPutAzureUser" />
+				</methods>
+			</class>
+			<class name="com.solvd.automation.lab.carina.demo.AzureCoverPhotoTest">
+				<methods>
+					<include name="testGetCovers" />
+					<include name="testDeleteCover" />
+					<include name="testGetCoverById" />
+					<include name="testGetCoverByBookId" />
+					<include name="testPostCover" />
+					<include name="testPutCover" />
+				</methods>
+			</class>
+			<class name="com.solvd.automation.lab.carina.demo.AzureBookTest">
+				<methods>
+					<include name="testPostAzureBook" />
+					<include name="testGetAzureBooks" />
+					<include name="testDeleteAzureBook" />
+					<include name="testGetAzureBookById" />
+					<include name="testPutAzureBook" />
+				</methods>
+			</class>
+			<class name="com.solvd.automation.lab.carina.demo.AzureAuthorTest">
+				<methods>
+					<include name="testGetAuthors" />
+					<include name="testDeleteAuthor" />
+					<include name="testGetAuthorByID" />
+					<include name="testGetAuthorByBookId" />
+					<include name="testPostAuthor" />
+					<include name="testPutAuthor" />
+				</methods>
+			</class>
+			<class name="com.solvd.automation.lab.carina.demo.AzureActivityTest">
+				<methods>
+					<include name="testPostAzureActivity" />
+					<include name="testGetAzureActivity" />
+					<include name="testDeleteAzureActivity" />
+					<include name="testGetAzureActivityById" />
+					<include name="testPutAzureActivity" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+</suite>

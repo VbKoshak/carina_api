@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+      "ID": {
+          "type": "integer"
+      },
+      "UserName" : {
+          "type": "string"
+      },
+      "Password": {
+          "type": "string"
+      }
+  },
+  "required": [
+      "ID",
+      "UserName",
+      "Password"
+  ]
+}
